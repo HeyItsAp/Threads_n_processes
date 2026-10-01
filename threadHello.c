@@ -1,9 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <pthread.h>
 #define NTHREADS 10
 pthread_t threads[NTHREADS];
 void *go (void *n) {
 	printf("Hello from thread %ld\n", (long)n);
+	if(n==5){
+		sleep(2);
+	}
 	pthread_exit(100 + n);
 	// REACHED?
 }
